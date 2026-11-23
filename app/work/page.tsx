@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: 'Work',
   description:
     'A curated portfolio of websites and digital products we have built for businesses across the UK.',
+  alternates: {
+    canonical: 'https://solvixcore.com/work',
+  },
 }
 
 export default function WorkPage() {

@@ -1,3 +1,5 @@
+import type { Insight } from '@/lib/site'
+
 export function OrganizationSchema() {
   const schema = {
     '@context': 'https://schema.org',
@@ -55,6 +57,40 @@ export function OrganizationSchema() {
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  )
+}
+
+export function BlogPostingSchema({ article }: { article: Insight }) {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: article.title,
+    description: article.excerpt,
+    url: `https://solvixcore.com/insights/${article.slug}`,
+    mainEntityOfPage: `https://solvixcore.com/insights/${article.slug}`,
+    articleSection: article.category,
+    keywords: article.tags,
+    author: {
+      '@type': 'Organization',
+      name: 'Solvix Core',
+      url: 'https://solvixcore.com',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Solvix Core',
+      url: 'https://solvixcore.com',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://solvixcore.com/logo.png',
+      },
+    },
+  }
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, '\\u003c') }}
     />
   )
 }

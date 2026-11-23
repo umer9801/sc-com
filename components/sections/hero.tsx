@@ -147,9 +147,9 @@ export function Hero() {
               className="mt-10 flex flex-wrap gap-6 border-t-2 border-line pt-5"
             >
               {[
-                { v: '50+', l: 'Projects' },
-                { v: '30+', l: 'Clients' },
-                { v: '24/7', l: 'Systems' },
+                { v: '01', l: 'Accountable team' },
+                { v: 'UK + CA', l: 'Markets served' },
+                { v: '24h', l: 'Reply target' },
               ].map((s) => (
                 <div key={s.l} className="flex items-baseline gap-2">
                   <span className="font-display text-lg text-forest">{s.v}</span>

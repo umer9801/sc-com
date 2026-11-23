@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: 'Solutions',
   description:
     'Outcome-focused solutions: business automation, AI integration, digital transformation, customer experience and more.',
+  alternates: {
+    canonical: 'https://solvixcore.com/solutions',
+  },
 }
 
 export default function SolutionsPage() {

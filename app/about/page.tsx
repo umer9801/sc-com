@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: 'About',
   description:
     'Solvix Core is a UK technology studio combining strategy, design and engineering into one accountable team.',
+  alternates: {
+    canonical: 'https://solvixcore.com/about',
+  },
 }
 
 const VALUES = [
@@ -69,22 +72,28 @@ const DISCIPLINES = [
 
 const TEAM = [
   {
-    name: 'Ahmad Farooq',
-    role: 'Founder & Lead Engineer',
-    bio: 'Full-stack engineer and product architect with 8+ years shipping SaaS, AI systems and automation at scale.',
-    focus: ['Architecture', 'AI', 'SaaS'],
+    name: 'Muhammad Umer',
+    role: 'Founder',
+    bio: 'Guides the studio’s direction and helps shape client projects from the first conversation.',
+    focus: ['Studio Direction', 'Client Projects'],
   },
   {
-    name: 'Sarah Chen',
-    role: 'Design Lead',
-    bio: 'Product designer specializing in complex interfaces, design systems and motion-led storytelling.',
-    focus: ['Product Design', 'Design Systems', 'Motion'],
+    name: 'Abu Bakar',
+    role: 'Co-Founder & Lead Engineer',
+    bio: 'Leads engineering and builds reliable digital products for client teams.',
+    focus: ['Engineering', 'Product Development'],
   },
   {
-    name: 'Marcus Webb',
-    role: 'Backend & Infrastructure',
-    bio: 'Systems engineer focused on data modeling, API design and infrastructure that scales without surprises.',
-    focus: ['Node.js', 'PostgreSQL', 'AWS'],
+    name: 'Shaheryar Javed',
+    role: 'Designer & CEO',
+    bio: 'Leads design and company direction, creating thoughtful experiences for digital products.',
+    focus: ['Design', 'Company Leadership'],
+  },
+  {
+    name: 'Fahad Ahmed',
+    role: 'Sales & Lead Generation',
+    bio: 'Builds client relationships and connects businesses with the right Solvix Core services.',
+    focus: ['Sales', 'Lead Generation'],
   },
 ]
 
@@ -277,7 +286,7 @@ export default function AboutPage() {
               </p>
             </ScrollReveal>
           </div>
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {TEAM.map((member, i) => (
               <ScrollReveal key={member.name} delay={i * 0.08}>
                 <div className="rounded-3xl border border-line bg-pearl p-8">

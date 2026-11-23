@@ -6,6 +6,7 @@ import { CTASection } from '@/components/cta-section'
 import { NewsletterForm } from '@/components/newsletter-form'
 import { Container, Section } from '@/components/section'
 import { ScrollReveal, Stagger, StaggerItem } from '@/components/reveal'
+import { BlogPostingSchema } from '@/components/structured-data'
 import { INSIGHTS, type InsightSection } from '@/lib/site'
 
 type Props = { params: Promise<{ slug: string }> }
@@ -21,6 +22,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: article.title,
     description: article.excerpt,
+    alternates: {
+      canonical: `https://solvixcore.com/insights/${article.slug}`,
+    },
+    openGraph: {
+      type: 'article',
+      title: article.title,
+      description: article.excerpt,
+      url: `https://solvixcore.com/insights/${article.slug}`,
+      siteName: 'Solvix Core',
+      locale: 'en_US',
+      section: article.category,
+      tags: article.tags,
+      images: [{ url: '/logo.png', width: 1200, height: 630, alt: 'Solvix Core' }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: article.title,
+      description: article.excerpt,
+      images: ['/logo.png'],
+    },
   }
 }
 
@@ -116,6 +137,7 @@ export default async function ArticlePage({ params }: Props) {
 
   return (
     <>
+      <BlogPostingSchema article={article} />
       {/* Article header */}
       <div className="relative overflow-hidden pt-36 pb-0 md:pt-44">
         {/* Background grid */}

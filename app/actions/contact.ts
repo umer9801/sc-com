@@ -42,10 +42,15 @@ export async function submitContactForm(data: ContactFormData): Promise<ActionRe
     }
 
     // Send emails in parallel — don't block on failure
-    await Promise.allSettled([
+    const notificationResults = await Promise.allSettled([
       sendAdminAlert(payload),
       sendUserConfirmation(payload),
     ])
+    for (const result of notificationResults) {
+      if (result.status === 'rejected') {
+        console.error('[contact notification]', result.reason)
+      }
+    }
 
     return { success: true }
   } catch (err) {

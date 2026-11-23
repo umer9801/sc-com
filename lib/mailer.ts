@@ -196,9 +196,9 @@ function wrap(body: string) {
       <strong style="color: #1a1a18;">Solvix Core</strong> — Digital systems that move business
     </p>
     <div class="footer-links">
-      <a href="mailto:info@solvixcore.uk" class="footer-link">info@solvixcore.uk</a>
+      <a href="mailto:info@solvixcore.com" class="footer-link">info@solvixcore.com</a>
       <span style="color: #ddd;">•</span>
-      <a href="https://solvixcore.uk" class="footer-link">solvixcore.uk</a>
+      <a href="https://solvixcore.com" class="footer-link">solvixcore.com</a>
     </div>
     <p style="margin-top: 16px; font-size: 11px; color: #aaa;">
       © ${new Date().getFullYear()} Solvix Core. All rights reserved.
@@ -263,7 +263,7 @@ export async function sendAdminAlert(s: SubmissionData) {
       </div>
 
       <div style="text-align: center; margin: 32px 0;">
-        <a href="https://solvixcore.uk/admin/dashboard" class="btn">
+        <a href="https://solvixcore.com/admin/dashboard" class="btn">
           View Full Details in Dashboard →
         </a>
       </div>

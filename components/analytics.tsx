@@ -1,8 +1,41 @@
 'use client'
 
+import { useEffect, useRef } from 'react'
+import { usePathname } from 'next/navigation'
 import Script from 'next/script'
 
+declare global {
+  interface Window {
+    gtag?: (
+      command: string,
+      eventName: string,
+      params: Record<string, string | boolean>,
+    ) => void
+  }
+}
+
+export function trackLeadConversion(projectType: string) {
+  if (typeof window === 'undefined') return
+
+  window.gtag?.('event', 'generate_lead', {
+    project_type: projectType || 'not_specified',
+  })
+}
+
 export function GoogleAnalytics({ measurementId }: { measurementId: string }) {
+  const pathname = usePathname()
+  const previousPathname = useRef(pathname)
+
+  useEffect(() => {
+    if (previousPathname.current === pathname) return
+    previousPathname.current = pathname
+    window.gtag?.('event', 'page_view', {
+      page_path: pathname,
+      page_title: document.title,
+      page_location: window.location.href,
+    })
+  }, [pathname])
+
   return (
     <>
       <Script

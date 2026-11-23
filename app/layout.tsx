@@ -4,6 +4,7 @@ import { Press_Start_2P, VT323, Share_Tech_Mono } from 'next/font/google'
 import './globals.css'
 import { LayoutWrapper } from '@/components/layout-wrapper'
 import { OrganizationSchema, WebsiteSchema, LocalBusinessSchema } from '@/components/structured-data'
+import { GoogleAnalytics, MicrosoftClarity } from '@/components/analytics'
 
 /* pixel body — VT323 is large and very readable at body sizes */
 const inter = VT323({
@@ -121,11 +122,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://solvixcore.com',
   },
-  verification: {
-    google: 'your-google-verification-code',
-    // yandex: 'your-yandex-verification-code',
-    // bing: 'your-bing-verification-code',
-  },
+  verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+    : undefined,
 }
 
 export const viewport: Viewport = {
@@ -145,6 +144,12 @@ export default function RootLayout({
       </head>
       <body className="antialiased font-sans">
         <LayoutWrapper>{children}</LayoutWrapper>
+        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+          <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+        )}
+        {process.env.NEXT_PUBLIC_CLARITY_ID && (
+          <MicrosoftClarity clarityId={process.env.NEXT_PUBLIC_CLARITY_ID} />
+        )}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

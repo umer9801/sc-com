@@ -2,12 +2,13 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { ArrowUpRight, Mail, MapPin, Clock, ExternalLink, CheckCircle, ChevronDown } from 'lucide-react'
+import { ArrowUpRight, Mail, MapPin, Clock, MessageCircle, CheckCircle, ChevronDown } from 'lucide-react'
 import { PageHero } from '@/components/page-hero'
 import { Container, Section, Eyebrow } from '@/components/section'
 import { ScrollReveal, Stagger, StaggerItem } from '@/components/reveal'
 import { MagneticButton } from '@/components/magnetic-button'
 import { submitContactForm } from '@/app/actions/contact'
+import { trackLeadConversion } from '@/components/analytics'
 
 const CONTACT_INFO = [
   { icon: Mail,    label: 'Email',         value: 'info@solvixcore.com',       href: 'mailto:info@solvixcore.com' },
@@ -15,10 +16,9 @@ const CONTACT_INFO = [
   { icon: Clock,   label: 'Response time', value: 'Within 24 hours',          href: null },
 ]
 
-const SOCIAL = [
-  { icon: ExternalLink, label: 'GitHub',   href: 'https://github.com' },
-  { icon: ExternalLink, label: 'LinkedIn', href: 'https://linkedin.com' },
-  { icon: ExternalLink, label: 'Twitter',  href: 'https://twitter.com' },
+const QUICK_CONTACT = [
+  { label: 'WhatsApp — Canada', href: 'https://wa.me/14378898265' },
+  { label: 'WhatsApp — UK', href: 'https://wa.me/447348486506' },
 ]
 
 const CHECKLIST = [
@@ -63,6 +63,7 @@ export default function ContactPage() {
     const result = await submitContactForm(form)
     setLoading(false)
     if (result.success) {
+      trackLeadConversion(form.projectType)
       setSubmitted(true)
     } else {
       setError(result.error)
@@ -111,11 +112,12 @@ export default function ContactPage() {
                 </div>
                 <ScrollReveal delay={0.25}>
                   <div className="mt-6 flex gap-3">
-                    {SOCIAL.map((s) => (
-                      <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
-                        aria-label={s.label}
-                        className="flex size-9 items-center justify-center border-2 border-line bg-pearl text-graphite hover:border-forest hover:text-forest transition-colors">
-                        <s.icon className="size-3.5" />
+                    {QUICK_CONTACT.map((channel) => (
+                      <a key={channel.label} href={channel.href} target="_blank" rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 border-2 border-line bg-pearl px-3 py-2 font-mono text-[9px] uppercase tracking-widest text-charcoal hover:border-forest hover:text-forest transition-colors">
+                        <MessageCircle className="size-3.5 text-forest" />
+                        {channel.label}
+                        <ArrowUpRight className="size-3" />
                       </a>
                     ))}
                   </div>
@@ -168,7 +170,7 @@ export default function ContactPage() {
                   </div>
                   <h2 className="mt-6 font-display text-xl font-semibold text-charcoal">MESSAGE RECEIVED.</h2>
                   <p className="mt-3 max-w-sm text-xl text-graphite">
-                    Thanks for reaching out. Check your email — we have sent a confirmation. We will reply within 24 hours.
+                    Thanks for reaching out. We have received your project details and will reply within 24 hours.
                   </p>
                   <div className="mt-8 flex gap-4">
                     <button
@@ -186,7 +188,7 @@ export default function ContactPage() {
               ) : (
                 <form onSubmit={handleSubmit} className="border-2 border-charcoal bg-pearl p-8 shadow-[6px_6px_0_0_var(--charcoal)] md:p-10">
                   <h3 className="font-display text-base font-semibold text-charcoal mb-1">Tell us about your project</h3>
-                  <p className="text-xl text-graphite mb-8">The more context you give us, the more useful our response will be.</p>
+                  <p className="text-xl text-graphite mb-8">Share what you know. Company, project type and budget are optional.</p>
 
                   <div className="grid gap-5 sm:grid-cols-2">
                     {/* Name */}

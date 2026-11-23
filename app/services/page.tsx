@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: 'Services',
   description:
     'Web, SaaS, mobile, AI, automation, e-commerce and custom software — engineering for what is next.',
+  alternates: {
+    canonical: 'https://solvixcore.com/services',
+  },
 }
 
 const extras = ['AI Chatbots', 'n8n Automation', 'POS Systems', 'SEO & Content', 'AI Integrations']

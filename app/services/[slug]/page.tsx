@@ -22,6 +22,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: service.title,
     description: service.description,
+    alternates: {
+      canonical: `https://solvixcore.com/services/${service.id}`,
+    },
+    openGraph: {
+      type: 'website',
+      title: service.title,
+      description: service.description,
+      url: `https://solvixcore.com/services/${service.id}`,
+    },
   }
 }
 

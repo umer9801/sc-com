@@ -12,6 +12,16 @@ export const metadata: Metadata = {
   title: 'Insights',
   description:
     'Thinking on AI, automation, web development, SaaS and technology from the Solvix Core team.',
+  alternates: {
+    canonical: 'https://solvixcore.com/insights',
+  },
+  openGraph: {
+    type: 'website',
+    title: 'Insights | Solvix Core',
+    description:
+      'Practical guides to software development, AI, business automation and SaaS from the Solvix Core team.',
+    url: 'https://solvixcore.com/insights',
+  },
 }
 
 const CATEGORY_DESC: Record<string, string> = {

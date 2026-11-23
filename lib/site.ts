@@ -525,7 +525,253 @@ export type Insight = {
   tags: string[]
 }
 
-export const INSIGHTS: Insight[] = [
+const insightDateValue = (date: string) => {
+  const [month, year] = date.split(' ')
+  return Date.parse(`${month} 1, ${year}`)
+}
+
+export const INSIGHTS: Insight[] = ([
+  {
+    slug: 'website-redesign-that-generates-enquiries',
+    title: 'How to Plan a Website Redesign That Generates Enquiries',
+    category: 'Web Development',
+    excerpt:
+      'A practical UK and Canada business guide to improving website conversions, clarifying your offer and turning more qualified visits into enquiries.',
+    date: 'Nov 2026',
+    readTime: '6 min',
+    tags: ['Website Redesign', 'Conversion', 'Web Development', 'UK', 'Canada'],
+    keyTakeaways: [
+      'Start with visitor needs and business goals, not visual trends.',
+      'Make your service, audience and next step clear on the first screen.',
+      'Use relevant proof and remove unnecessary form friction.',
+      'Measure qualified enquiries and calls, not just page views.',
+    ],
+    body: [
+      {
+        type: 'paragraph',
+        content:
+          'A website redesign is only successful if it helps the right people take a useful next step. A fresh visual style can help, but it will not fix an unclear offer, missing evidence or a contact journey that asks too much too soon. Before changing the design, understand what prospective customers need to know before they feel confident contacting you.',
+      },
+      {
+        type: 'heading',
+        content: 'Begin with the questions customers ask',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'Talk to recent customers and your sales team. What problem led them to search? What alternatives did they compare? What made them choose you, and what nearly stopped them? Use those answers to organize your pages around real buyer questions: who you help, what you deliver, how the engagement works and what happens after someone gets in touch.',
+      },
+      {
+        type: 'heading',
+        content: 'Make the first screen specific',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'A visitor should quickly understand the service, the kind of business it is for and the next step. Replace broad claims such as “innovative digital solutions” with plain language about outcomes and services. Put one primary call to action near the headline, then use a secondary link for visitors who need more detail before speaking with you.',
+      },
+      {
+        type: 'callout',
+        label: 'Quick test',
+        content:
+          'Show your homepage to someone outside your business for five seconds. Ask who the company helps, what it does and what they should do next. If they cannot answer, simplify the message before adding more sections.',
+      },
+      {
+        type: 'heading',
+        content: 'Use evidence that answers buyer doubts',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'Specific, verifiable proof helps prospects assess risk. Explain your process, show real work with context, identify the people involved and answer practical questions about timelines, ownership and support. Do not invent testimonials, client results or project counts; unsupported claims can reduce trust instead of building it.',
+      },
+      {
+        type: 'heading',
+        content: 'Make contacting you feel easy',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'Ask only for details you need to start a conversation. Make optional fields clearly optional, use a short message prompt, and tell visitors what happens after they submit. Offer a direct email or messaging option for people who prefer not to use a form. On mobile, make buttons easy to tap and ensure the form does not lose information when an error occurs.',
+      },
+      {
+        type: 'heading',
+        content: 'Measure meaningful outcomes after launch',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'Track organic search impressions, relevant landing-page visits, contact-button clicks, completed forms and qualified enquiries. Review the search terms people use and the pages where they leave. A rise in traffic without relevant enquiries may mean the targeting or message is off; a smaller number of qualified conversations can be more useful than a large volume of unfocused visits.',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'A conversion-focused redesign combines clear messaging, useful proof, fast pages and a low-friction contact path. Solvix Core works with UK and Canadian businesses on websites and web applications built around those goals. If you are planning a redesign, tell us what is not working and we can help you identify a practical first step.',
+      },
+    ],
+  },
+  {
+    slug: 'saas-mvp-planning-for-founders',
+    title: 'SaaS MVP Planning: What to Build First',
+    category: 'SaaS',
+    excerpt:
+      'A founder-friendly framework for validating a SaaS idea, prioritising the first release and avoiding months of unnecessary product development.',
+    date: 'Nov 2026',
+    readTime: '6 min',
+    tags: ['SaaS MVP', 'Startups', 'Product Strategy', 'Software Development'],
+    keyTakeaways: [
+      'Validate the customer problem before committing to a large build.',
+      'Design an MVP around one complete, valuable user journey.',
+      'Treat security, data ownership and support as launch requirements.',
+      'Use real user behaviour to decide what to build next.',
+    ],
+    body: [
+      {
+        type: 'paragraph',
+        content:
+          'An MVP is not a half-finished version of the product you hope to build one day. It is the smallest dependable product that lets you test an important business assumption with real users. For a SaaS founder, that means choosing one audience, one painful problem and one workflow valuable enough that a customer will use it and give honest feedback.',
+      },
+      {
+        type: 'heading',
+        content: 'Validate the problem before the backlog',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'Interview people who experience the problem today. Ask how they solve it, what it costs them and what they have already tried. Look for repeated behaviour, not just encouragement. A polite “I would use that” is weaker evidence than someone agreeing to test a prototype, share a sample workflow or discuss a paid pilot.',
+      },
+      {
+        type: 'heading',
+        content: 'Scope one complete journey',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'Map the shortest end-to-end journey that delivers the main value: how a customer starts, provides information, sees a result and returns to use the product again. Keep the first release focused on this path. Features such as advanced reporting, multiple integrations and elaborate configuration can wait unless they are essential to the core promise.',
+      },
+      {
+        type: 'list',
+        content: 'Before development, agree on:',
+        items: [
+          'The target customer and the problem the product addresses.',
+          'The first workflow a customer must complete successfully.',
+          'The evidence that would confirm or challenge your assumptions.',
+          'The integrations, data and permissions required for that workflow.',
+          'Who will support early users and make product decisions.',
+        ],
+      },
+      {
+        type: 'callout',
+        label: 'Keep quality in scope',
+        content:
+          'A small MVP can still require secure authentication, sensible access controls, backups, error handling and clear data ownership. “Minimum” means less scope—not avoidable risk for your first customers.',
+      },
+      {
+        type: 'heading',
+        content: 'Choose a delivery plan that preserves learning',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'Break the work into milestones that produce something testable. Start by resolving the highest-risk unknowns, especially unfamiliar integrations or complex data flows. Review working software regularly with a few representative users, and keep a record of what they actually do. This gives you options to adjust before too much budget is committed to assumptions.',
+      },
+      {
+        type: 'heading',
+        content: 'Decide what happens after launch',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'A SaaS product needs an owner after the first release. Plan who responds to support requests, monitors service health, handles data requests and schedules maintenance. Make sure your company has access to its repository, infrastructure and documentation. These basics make it possible to improve the product without depending on undocumented knowledge.',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'The best first release creates useful evidence: users can complete the core task, the business can learn from their behaviour, and the team can operate the product responsibly. Solvix Core helps founders turn SaaS ideas into scoped, production-minded delivery plans. Start with the problem you want to validate, not a long feature list.',
+      },
+    ],
+  },
+  {
+    slug: 'when-to-use-ai-automation-in-your-business',
+    title: 'When Should a Business Use AI Automation?',
+    category: 'AI',
+    excerpt:
+      'Learn where AI automation can help, which processes should stay human-led, and how to run a low-risk pilot with measurable results.',
+    date: 'Nov 2026',
+    readTime: '6 min',
+    tags: ['AI Automation', 'Business Process', 'ROI', 'UK', 'Canada'],
+    keyTakeaways: [
+      'Use AI where language or classification work is repetitive and reviewable.',
+      'Keep people involved when decisions are sensitive or hard to reverse.',
+      'Check data quality, privacy and system integrations before selecting a tool.',
+      'Pilot against a baseline and measure quality as well as time saved.',
+    ],
+    body: [
+      {
+        type: 'paragraph',
+        content:
+          'AI automation can help teams process documents, classify incoming requests, draft responses and find information across internal knowledge. It is not automatically the right answer for every repetitive task. A reliable rule-based workflow may be cheaper and easier to audit, while a high-impact decision may need a person to review every result. The right choice depends on the work, the risks and the evidence you can collect.',
+      },
+      {
+        type: 'heading',
+        content: 'Look for work with clear boundaries',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'Good pilot candidates tend to have repeated inputs, a defined outcome and examples that people can use to judge quality. Document the current steps and exceptions first. For example, AI might extract fields from incoming documents for an employee to verify, or draft a response that a support agent edits before sending. Those workflows can save effort while keeping an accountable person in control.',
+      },
+      {
+        type: 'heading',
+        content: 'Know when a human decision matters',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'Keep a human in the loop when an incorrect result could affect a customer relationship, financial outcome, legal obligation or access to a service. Define what the system is allowed to do, when it must ask for review and how a person can correct the result. Avoid letting a model take irreversible actions based only on an unverified response.',
+      },
+      {
+        type: 'list',
+        content: 'Before a pilot, answer these practical questions:',
+        items: [
+          'Is the source information accurate, current and permitted for this use?',
+          'How will you identify a wrong, incomplete or uncertain output?',
+          'Which actions require approval before they affect a customer or record?',
+          'Can staff see what the system did and correct it?',
+          'What is the fallback if the model or an integration is unavailable?',
+        ],
+      },
+      {
+        type: 'heading',
+        content: 'Measure the whole result',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'Record a baseline before changing the workflow: time per case, error rate, rework and time to respond. During the pilot, measure those same outcomes along with review effort and operating costs. A process that saves minutes but creates more corrections may not be an improvement. Set a clear stop condition as well as a success condition so the team knows when to pause or redesign the pilot.',
+      },
+      {
+        type: 'callout',
+        label: 'Start small',
+        content:
+          'Test one workflow with a limited group, representative examples and a clear human review path. Expand only after the results are consistent and the process owner is comfortable operating it.',
+      },
+      {
+        type: 'heading',
+        content: 'Plan for privacy and ongoing ownership',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'Review what data is sent to each service, who can access the outputs and how long information is retained. Use approved accounts and least-privilege access. Assign a process owner who can review failures, update guidance and decide when the workflow should change. AI systems are products that need maintenance, not one-time integrations that can be forgotten after launch.',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'AI automation is most useful when it improves a defined process without hiding responsibility. If you are considering an AI assistant or workflow automation for your business, Solvix Core can help evaluate the use case, risks and smallest sensible pilot before you invest in a larger build.',
+      },
+    ],
+  },
   {
     slug: 'designing-ai-agents-for-production',
     title: 'Designing AI Agents That Survive Production',
@@ -996,7 +1242,259 @@ SET LOCAL app.tenant_id = '${'{tenant_id}'}';`,
       },
     ],
   },
-]
+  {
+    slug: 'how-to-choose-a-software-development-company',
+    title: 'How to Choose a Software Development Company in 2026',
+    category: 'Business',
+    excerpt:
+      'A practical guide to evaluating software development partners, comparing proposals, and protecting your investment before a project starts.',
+    date: 'Nov 2026',
+    readTime: '7 min',
+    tags: ['Software Development', 'Vendor Selection', 'Project Planning', 'UK', 'Canada'],
+    keyTakeaways: [
+      'Start with the business outcome and constraints, not a feature wish list.',
+      'Ask who will actually deliver the work and how you will work together.',
+      'Compare proposals by assumptions, risks, ownership and support—not price alone.',
+      'A small, testable first phase can reduce uncertainty before a larger commitment.',
+    ],
+    body: [
+      {
+        type: 'paragraph',
+        content:
+          'Choosing a software development company is a business decision, not just a technical one. The right partner helps you clarify the problem, make sensible trade-offs and deliver software your team can operate. The wrong fit can leave you with missed deadlines, unclear ownership and a product that solves the specification but not the underlying need. Use this guide to assess a software development partner before you sign.',
+      },
+      {
+        type: 'heading',
+        content: 'Write down the outcome before the features',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'Before speaking with agencies, describe the business problem in plain language. Who experiences it? How is it handled today? What should improve, and how will you measure that improvement? A useful brief also lists constraints such as launch dates, integrations, compliance needs, budget range and who will make decisions. You do not need a complete technical specification; a good partner should help you shape one.',
+      },
+      {
+        type: 'callout',
+        label: 'A better first question',
+        content:
+          'Instead of asking, “Can you build these features?”, ask, “What would you need to learn to recommend the smallest solution that achieves this outcome?”',
+      },
+      {
+        type: 'heading',
+        content: 'Evaluate the people and the process',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'Ask who will lead discovery, design and engineering after the sales conversation. Meet the people responsible for delivery and understand how often you will see working software, how decisions are documented, and how scope changes are handled. A clear weekly cadence and a named decision-maker on each side are often more valuable than a long list of tools.',
+      },
+      {
+        type: 'list',
+        content: 'Use these questions to make conversations specific:',
+        items: [
+          'What risks or unknowns do you see in our brief?',
+          'How will you validate the most important assumptions early?',
+          'Who owns the code, cloud accounts, data and documentation?',
+          'How do you test releases and handle defects after launch?',
+          'What support is available when the original project team moves on?',
+        ],
+      },
+      {
+        type: 'heading',
+        content: 'Compare proposals on more than price',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'A useful proposal explains its assumptions, exclusions, milestones, team, dependencies and acceptance criteria. Compare the work included in each estimate, not just the headline total. Check whether discovery, testing, deployment, accessibility, analytics, training and post-launch support are accounted for. If two estimates differ dramatically, ask what each team understood differently before treating either number as a reliable budget.',
+      },
+      {
+        type: 'heading',
+        content: 'Protect ownership and reduce delivery risk',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'Make ownership explicit in the agreement. Your business should have appropriate access to source code, repositories, production environments, data and project documentation. Agree how credentials are managed and how a handover works. For uncertain projects, start with a defined discovery or prototype phase that produces decisions and evidence—not an open-ended commitment to build everything at once.',
+      },
+      {
+        type: 'heading',
+        content: 'Look for honest trade-offs',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'A dependable software partner will explain when an off-the-shelf product is a better choice, flag features that can wait, and discuss maintenance as well as launch. Beware of guarantees made before the team understands your systems, data and users. Clear risks and a realistic plan are stronger signals than confident promises.',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'The best partner is the one who can connect engineering choices to your business goals and work transparently with your team. If you are assessing a web application, SaaS product or automation project, talk to Solvix Core about the problem before committing to a build.',
+      },
+    ],
+  },
+  {
+    slug: 'custom-software-development-budget-planning',
+    title: 'How to Budget for Custom Software Development',
+    category: 'Business',
+    excerpt:
+      'Understand the factors behind a custom software estimate, plan a realistic first release, and avoid common budgeting surprises.',
+    date: 'Nov 2026',
+    readTime: '6 min',
+    tags: ['Custom Software', 'Budgeting', 'MVP', 'Project Planning'],
+    keyTakeaways: [
+      'Software budgets depend on scope, integrations, risk and operational needs.',
+      'A clear first release is easier to estimate than an unprioritized feature backlog.',
+      'Include testing, deployment, support and ongoing ownership in your plan.',
+      'Discovery can replace guesswork with a phased, evidence-based estimate.',
+    ],
+    body: [
+      {
+        type: 'paragraph',
+        content:
+          '“How much does custom software cost?” is a reasonable first question, but there is no useful universal price without knowing what the software must do. A secure customer portal with one integration is a different project from a multi-role platform that replaces several legacy systems. A credible budget starts by identifying the outcome, boundaries and unknowns—not by guessing at a number from a feature list.',
+      },
+      {
+        type: 'heading',
+        content: 'What changes the size of a software project?',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'The largest cost drivers are usually the number and complexity of user journeys, integrations with third-party or legacy systems, data migration, permissions, reporting, compliance requirements and the quality bar for reliability. A polished interface is only part of the work. Authentication, error handling, testing, deployment and operational monitoring all affect the effort required to deliver software that can be used safely.',
+      },
+      {
+        type: 'list',
+        content: 'When requesting an estimate, make these assumptions visible:',
+        items: [
+          'Which users and roles need access, and what can each role do?',
+          'Which systems must exchange data, and who controls those systems?',
+          'Is existing data being migrated, cleaned or reconciled?',
+          'What security, privacy, accessibility or audit requirements apply?',
+          'Who will own content, support, infrastructure and future changes?',
+        ],
+      },
+      {
+        type: 'heading',
+        content: 'Define a first release that proves value',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'A first release should deliver one meaningful outcome to a clearly defined group of users. Separate must-have workflows from improvements that can follow once people are using the product. This is not about shipping a fragile prototype; it is about avoiding speculative features while still including the quality, security and support needed for a real launch.',
+      },
+      {
+        type: 'callout',
+        label: 'A useful budget question',
+        content:
+          'What is the smallest dependable release that lets us test our most important business assumption with real users?',
+      },
+      {
+        type: 'heading',
+        content: 'Budget for delivery and ownership',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'Project estimates should make clear what is included: discovery, design, implementation, automated and manual testing, deployment, documentation and handover. Plan separately for recurring costs such as hosting, third-party services, monitoring and ongoing maintenance. If your internal team will own the product, account for training and the time needed to learn the system. If a partner will support it, agree response expectations and what counts as new work.',
+      },
+      {
+        type: 'heading',
+        content: 'Reduce uncertainty before locking the plan',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'When requirements are unclear or integrations are unfamiliar, a short discovery phase can map the workflows, inspect technical constraints and produce a prioritised scope. The useful outcome is not a thick document; it is a shared understanding of what to build first, what could change the estimate and which decisions are still open. Ask for estimates with explicit assumptions and ranges when the evidence does not justify false precision.',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'A well-planned software budget is tied to measurable business value and includes the full cost of operating the result. Solvix Core helps businesses scope custom software and web applications into clear, phased delivery plans. Bring us the problem you are trying to solve, and we can help identify the next sensible step.',
+      },
+    ],
+  },
+  {
+    slug: 'business-process-automation-roi-guide',
+    title: 'Business Process Automation: Find the Right First Workflow',
+    category: 'Automation',
+    excerpt:
+      'How to identify repetitive work worth automating, estimate the real return, and introduce automation without creating fragile processes.',
+    date: 'Nov 2026',
+    readTime: '6 min',
+    tags: ['Business Automation', 'Workflow', 'n8n', 'ROI'],
+    keyTakeaways: [
+      'Map the current process before choosing an automation tool.',
+      'Start with repetitive, stable work that has measurable business impact.',
+      'Include exceptions, monitoring and human ownership in the design.',
+      'Measure quality and customer impact alongside time saved.',
+    ],
+    body: [
+      {
+        type: 'paragraph',
+        content:
+          'Business automation can reduce repetitive work, improve response times and make handoffs more consistent. But automating a confusing process usually makes the confusion happen faster. The best starting point is not the flashiest AI demo: it is a stable workflow with clear inputs, predictable decisions and a measurable cost when it is done manually.',
+      },
+      {
+        type: 'heading',
+        content: 'Map the process as it really works',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'Talk to the people doing the work and document each step, system and exception. Record how often the process runs, how long it takes, where information is re-entered and what happens when something is missing. This often reveals that the first opportunity is a small integration or validation step—not replacing the entire process with an AI agent.',
+      },
+      {
+        type: 'heading',
+        content: 'Choose a measurable first workflow',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'A strong candidate happens often, follows rules people can explain, uses systems with dependable interfaces and has a clear owner. Estimate the current effort using real observations rather than optimistic assumptions. Then decide how success will be measured: staff hours returned, faster turnaround, fewer errors, lower rework or a better customer experience.',
+      },
+      {
+        type: 'callout',
+        label: 'A simple ROI model',
+        content:
+          'Compare the ongoing cost of the manual process with the build, service and maintenance costs of automation. Include exception handling and human review; time saved on the happy path is not the whole result.',
+      },
+      {
+        type: 'list',
+        content: 'Before launch, define what happens when:',
+        items: [
+          'Required information is missing or does not match expected formats.',
+          'A connected service is unavailable or changes its response.',
+          'The workflow runs twice or a partial step must be retried.',
+          'A decision is uncertain and a person needs to review it.',
+          'The process owner needs to pause or change the workflow.',
+        ],
+      },
+      {
+        type: 'heading',
+        content: 'Build visibility and ownership in from day one',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'A production workflow needs a named owner, an audit trail and alerts for failures that matter. Decide how runs are reviewed, who handles exceptions and how changes are tested. Keep credentials secure and limit the data and permissions each connection needs. For AI-assisted steps, define which decisions can be automated and which require human approval.',
+      },
+      {
+        type: 'heading',
+        content: 'Expand only after the first result is clear',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'Run the workflow alongside the manual process long enough to compare outcomes, then fix the failure modes before removing the old path. Once you can demonstrate improved quality, speed or cost, apply the same method to the next process. This creates a managed automation programme rather than a collection of unowned workflows.',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'The most effective automation is usually a series of small, well-owned improvements. If your team is spending time on repeated data entry, slow handoffs or disconnected tools, Solvix Core can help map the process and decide whether workflow automation is the right fit.',
+      },
+    ],
+  },
+] satisfies Insight[]).sort((a, b) => insightDateValue(b.date) - insightDateValue(a.date))
 
 export const INSIGHT_CATEGORIES = ['AI', 'Automation', 'Web Development', 'SaaS', 'Technology', 'Business']
 
